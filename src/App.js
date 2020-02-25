@@ -3,7 +3,9 @@ import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
 import './App.css';
 //import 'leaflet/dist/leaflet.css';
 import {Icon} from 'leaflet'
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button';
+import axios from 'axios';
  
 
   
@@ -68,7 +70,7 @@ refreshloc(){
             </Popup>
           </Marker>
         </Map>
-        
+        <Button block="true">Liste monuments</Button>
       </div>
      
       )
