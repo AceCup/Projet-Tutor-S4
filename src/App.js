@@ -52,11 +52,11 @@ refreshloc(){
 
       iconUrl: 'mr.svg',
     
-      iconRetinaUrl: 'mr.svg',
+     // iconRetinaUrl: 'mr.svg',
     
       iconAnchor: [20, 40],
     
-      popupAnchor: [0, -35],
+     // popupAnchor: [0, -35],
     
       iconSize: [40, 40],
     
