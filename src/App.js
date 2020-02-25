@@ -1,8 +1,8 @@
 import React from 'react'
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
 import './App.css';
-import 'leaflet/dist/leaflet.css';
-import L from 'leaflet'
+//import 'leaflet/dist/leaflet.css';
+import {Icon} from 'leaflet'
 
  
 
@@ -15,7 +15,7 @@ class MyMap extends React.Component {
       lng:0,
       zoom: 16
     }
-    //this.displayLocationInfo=this.displayLocationInfo.bind(this);
+    
   }
   displayLocationInfo=(position)=> {
     let la=position.coords.latitude;
@@ -25,10 +25,7 @@ class MyMap extends React.Component {
       lng: lo
       
   })
-    /*this.state.lng = position.coords.longitude;
-    this.state.lat = position.coords.latitude;*/
-  
-   // console.log(`longitude: ${ this.state.lng } | latitude: ${ this.state.lat }`);
+    
   }
   getLocation(){
   if (navigator.geolocation) {
@@ -45,42 +42,27 @@ refreshloc(){
   }, 1000);
 }
 
-
-
   render () {
-   const markerimg = new L.Icon({
+  /*const markerimg = new Icon({
 
-      iconUrl: 'mr.svg',
-    
-     // iconRetinaUrl: 'mr.svg',
-    
+      iconUrl: './mr.svg',
       iconAnchor: [20, 40],
+      popupAnchor: [0, -35],
+      iconSize: [40, 40]
+    })*/
     
-     // popupAnchor: [0, -35],
-    
-      iconSize: [40, 40],
-    
-      shadowUrl: null,
-    
-      shadowSize:null,
-    
-      shadowAnchor: null,
-    
-    })
-
     this.getLocation();
     this.refreshloc();
     const pos = [this.state.lat, this.state.lng]
-    const position = [this.state.lat, this.state.lng];
     return (
       <div className="map-container">
         
-       <Map className="map" center={position} zoom={this.state.zoom}>
+       <Map className="map" center={pos} zoom={this.state.zoom} maxZoom={19}>
           <TileLayer
             url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
             attribution='&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           />
-          <Marker position={pos} icon={markerimg}>
+          <Marker position={pos} >
             <Popup>
               <span>A pretty CSS3 popup.<br/>Easily customizable.</span>
             </Popup>
