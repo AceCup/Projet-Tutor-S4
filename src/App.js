@@ -1,8 +1,11 @@
+
+import './App.css';
 import React from 'react'
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
-import './App.css';
 //import 'leaflet/dist/leaflet.css';
-import {Icon} from 'leaflet'
+import L from 'leaflet';
+import user from './assets/user.png';
+// import {Icon} from 'leaflet'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
@@ -44,6 +47,20 @@ refreshloc(){
   }, 1000);
 }
 
+
+userIcon = L.icon({
+  iconUrl: user,
+  // shadowUrl: 'user.png',
+
+  iconSize:     [60, 60], // size of the icon
+  // shadowSize:   [50, 64], // size of the shadow
+  iconAnchor:   [30, 60], // point of the icon which will correspond to marker's location
+  // shadowAnchor: [4, 62],  // the same for the shadow
+  popupAnchor:  [0, -60] // point from which the popup should open relative to the iconAnchor
+});
+
+
+
   render () {
   /*const markerimg = new Icon({
 
@@ -56,6 +73,9 @@ refreshloc(){
     this.getLocation();
     this.refreshloc();
     const pos = [this.state.lat, this.state.lng]
+
+
+
     return (
       <div className="map-container">
         
@@ -64,7 +84,7 @@ refreshloc(){
             url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
             attribution='&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           />
-          <Marker position={pos} >
+          <Marker position={pos} icon={this.userIcon}>
             <Popup>
               <span>A pretty CSS3 popup.<br/>Easily customizable.</span>
             </Popup>
