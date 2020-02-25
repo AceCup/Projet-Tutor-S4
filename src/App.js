@@ -71,9 +71,11 @@ refreshloc(){
     this.getLocation();
     this.refreshloc();
     const pos = [this.state.lat, this.state.lng]
+    const position = [this.state.lat, this.state.lng];
     return (
       <div className="map-container">
-        <Map style={{width: '100%',height: '800px'}} center={pos} zoom={this.state.zoom}>
+        
+       <Map className="map" center={position} zoom={this.state.zoom}>
           <TileLayer
             url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
             attribution='&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors'
