@@ -52,11 +52,11 @@ refreshloc(){
 
       iconUrl: 'mr.svg',
     
-      iconRetinaUrl: 'mr.svg',
+     // iconRetinaUrl: 'mr.svg',
     
       iconAnchor: [20, 40],
     
-      popupAnchor: [0, -35],
+     // popupAnchor: [0, -35],
     
       iconSize: [40, 40],
     
@@ -73,7 +73,7 @@ refreshloc(){
     const pos = [this.state.lat, this.state.lng]
     return (
       <div className="map-container">
-        <Map style={{width: '100%',height: '800px'}} center={pos} zoom={this.state.zoom}>
+        <Map className="map"  center={pos} zoom={this.state.zoom}>
           <TileLayer
             url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
             attribution='&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors'
