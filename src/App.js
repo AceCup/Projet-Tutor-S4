@@ -12,16 +12,28 @@ import axios from 'axios';
  
 
   
+
 class MyMap extends React.Component {
   constructor (prpos) {
     super(prpos)
     this.state = {
+      lieux: [],
       lat:0,
       lng:0,
-      zoom: 16
+      zoom: 16,
+
     }
     
   }
+  componentDidMount() {
+    axios.get(`https://devweb.iutmetz.univ-lorraine.fr/~muller668u/projetS4/lieux.php`)
+      .then(res => {
+        this.setState({lieux: res.data})
+        console.log(this.state.lieux);
+      })
+  }
+    
+
   displayLocationInfo=(position)=> {
     let la=position.coords.latitude;
     let lo=position.coords.longitude;
@@ -91,6 +103,9 @@ userIcon = L.icon({
           </Marker>
         </Map>
         <Button block="true">Liste monuments</Button>
+		<ul>
+        { this.state.lieux.map(lieu => <li>{lieu.NomLieu} {lieu.LatLieu} {lieu.LongLieu}</li>)}
+      </ul>
       </div>
      
       )
